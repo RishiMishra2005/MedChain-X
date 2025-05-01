@@ -5,10 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MedChain-X</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{url_for('static',filename='base.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
     {% block head %}{% endblock %}
 </head>
 <body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">MedChain-X</a>
+            <div class="nav-links">
+                <a href="{{ url_for('home') }}">Home</a>
+                <a href="{{ url_for('about') }}">About</a>
+                <a href="{{ url_for('predict') }}">Predict</a>
+            </div>
+        </div>
+    </nav>
+
     {% block content %}{% endblock %}
+
+    <footer class="footer">
+        <p>&copy; 2025 MedChain-X. All rights reserved.</p>
+    </footer>
 </body>
 </html>
