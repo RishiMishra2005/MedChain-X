@@ -1,0 +1,247 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>About | MedChain-X</title>
+<style>
+    /* About Page Custom Styles */
+    .about-hero {
+        background: url("{{ url_for('static', filename='images/test4.png') }}") no-repeat center center/cover;
+        height: 50vh;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+    }
+    .about-hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(94, 109, 125, 0.6);
+    }
+    .about-hero h1 {
+        position: relative;
+        font-size: 42px;
+        z-index: 1;
+        margin: 0;
+    }
+    .about-content {
+        padding: 40px 20px;
+        background: #fff;
+        margin: -40px auto 40px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        max-width: 900px;
+        text-align: justify;
+    }
+    .about-content p {
+        font-size: 18px;
+        margin: 20px 0;
+        color: #555;
+        line-height: 1.8;
+    }
+    /* Mission, Vision, Innovation Section */
+    .mission-vision {
+        padding: 40px 20px;
+        background: #f7f7f7;
+    }
+    .mv-container {
+        max-width: 1000px;
+        margin: auto;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    .mv-card {
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        flex: 1 1 300px;
+        max-width: 300px;
+        text-align: center;
+    }
+    .mv-card img {
+        width: 240px;
+        height: 200px;
+        object-fit: cover;
+        margin-bottom: 20px;
+        border-radius: 4px;
+    }
+    .mv-card h3 {
+        font-size: 22px;
+        color: #34495e;
+        margin-bottom: 10px;
+    }
+    .mv-card p {
+        font-size: 16px;
+        color: #666;
+        line-height: 1.5;
+    }
+    /* Steps Section */
+    .steps {
+        padding: 40px 20px;
+        background: #fff;
+    }
+    .steps h2 {
+        text-align: center;
+        font-size: 32px;
+        color: #34495e;
+        margin-bottom: 30px;
+    }
+    .steps-container {
+        max-width: 1000px;
+        margin: auto;
+        position: relative;
+    }
+    /* .steps::after {
+        content: '';
+        position: absolute;
+        width: 4px;
+        background: #1E90FF;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        margin-left: -2px;
+    } */
+    .step-item {
+        padding: 20px 40px;
+        position: relative;
+        width: 50%;
+    }
+    .step-item.left {
+        left: 0;
+        text-align: right;
+    }
+    .step-item.right {
+        left: 50%;
+    }
+    .step-item::before {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: #1E90FF;
+        border-radius: 50%;
+        top: 20px;
+    }
+    .step-item.left::before {
+        right: -10px;
+    }
+    .step-item.right::before {
+        left: -10px;
+    }
+    .step-item h3 {
+        font-size: 20px;
+        color: #34495e;
+        margin-bottom: 10px;
+    }
+    .step-item p {
+        font-size: 16px;
+        color: #555;
+        line-height: 1.5;
+    }
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        .about-hero h1 {
+            font-size: 32px;
+        }
+        .about-content {
+            margin: -20px 10px 20px;
+            padding: 30px 15px;
+        }
+        .about-content p {
+            font-size: 16px;
+        }
+        .mv-container {
+            flex-direction: column;
+            align-items: center;
+        }
+        .steps::after {
+            left: 20px;
+        }
+        .step-item {
+            width: 100%;
+            padding-left: 50px;
+            padding-right: 20px;
+        }
+        .step-item::before {
+            left: 10px;
+        }
+        .step-item.left, .step-item.right {
+            left: 0;
+            text-align: left;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="about-hero">
+    <h1>About MedChain-X</h1>
+</section>
+
+<br><br><br>
+<!-- Main Content Section -->
+<div class="about-content">
+    <p>
+        MedChain-X is a secure and AI-powered platform designed to assist in the early diagnosis of diseases through X-ray analysis.
+        Users can upload chest X-rays, and the platform utilizes deep learning models to analyze the image and provide a confidence score for possible medical conditions.
+    </p>
+    <p>
+        A downloadable report can also be generated, including user information and predictions. All data is handled securely.
+    </p>
+    <p>
+        Future improvements include blockchain integration for secure storage and verification of medical data.
+    </p>
+</div>
+
+<!-- Mission, Vision, Innovation Section -->
+<section class="mission-vision">
+    <div class="mv-container">
+        <div class="mv-card">
+            <img src="{{ url_for('static', filename='images/mission.jpg') }}" alt="Mission">
+            <h3>Our Mission</h3>
+            <p>To revolutionize healthcare by making advanced AI diagnostics accessible and secure for everyone.</p>
+        </div>
+        <div class="mv-card">
+            <img src="{{ url_for('static', filename='images/vision.jpg') }}" alt="Vision">
+            <h3>Our Vision</h3>
+            <p>To be the global leader in AI-powered healthcare solutions, setting new standards for diagnostics.</p>
+        </div>
+        <div class="mv-card">
+            <img src="{{ url_for('static', filename='images/innovation.png') }}" alt="Innovation">
+            <h3>Innovation</h3>
+            <p>We continuously innovate to enhance the accuracy, speed, and security of our diagnostic tools.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Steps Section -->
+<section class="steps">
+    <h2>How MedChain-X Works</h2>
+    <div class="steps-container">
+        <div class="step-item left">
+            <h3>Step 1: Upload X-ray</h3>
+            <p>Start by uploading a high-quality chest X-ray image from your device.</p>
+        </div>
+        <div class="step-item right">
+            <h3>Step 2: AI Analysis</h3>
+            <p>Our AI-driven system analyzes the image to detect and diagnose potential conditions.</p>
+        </div>
+        <div class="step-item left">
+            <h3>Step 3: Generate Report</h3>
+            <p>Receive a detailed diagnostic report, complete with confidence scores and insights.</p>
+        </div>
+        <div class="step-item right">
+            <h3>Step 4: Secure Storage</h3>
+            <p>Your data is securely stored using advanced encryption and blockchain technology.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}
