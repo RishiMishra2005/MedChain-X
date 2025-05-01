@@ -2,20 +2,119 @@
 
 {% block head %}
     <title>MedChain-X | Diagnosis Result</title>
+    <style>
+        /* Global background for the result page */
+        body {
+            background: linear-gradient(135deg, #f5f7fa, #e0eafc);
+        }
+        /* Styling for the result card */
+        .result-card {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .result-card .card-body p {
+            font-size: 18px;
+        }
+        .result-card .alert p {
+            margin-bottom: 0.5rem;
+        }
+        /* Popup modal styling */
+        #popup {
+            display: none;
+            position: fixed;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            z-index: 1050;
+            font-weight: 500;
+            font-size: 18px;
+        }
+        /* Extra Information Section */
+        .extra-info {
+            margin-top: 50px;
+            padding: 30px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        .extra-info h2 {
+            font-size: 28px;
+            color: #34495e;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .extra-info p {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.6;
+        }
+        @media (max-width: 480px) {
+            .result-card .card-body p {
+                font-size: 16px;
+            }
+            .extra-info h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
 {% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1>Diagnosis Result</h1>
-    <div style="text-align: center; font-size: 18px; color: #333;">
-        <p><strong>Name:</strong> {{ name }}</p>
-        <p><strong>Age:</strong> {{ age }}</p>
-        <p><strong>Contact:</strong> {{ contact }}</p>
-        <div class="result" style="margin-top: 20px; padding: 15px; background: #e8f4ff; border-radius: 8px;">
-            <p style="font-size: 20px;"><strong>Prediction:</strong> {{ prediction }}</p>
-            <p style="font-size: 20px;"><strong>Confidence Score:</strong> {{ confidence }}%</p>
+<div class="container my-5">
+    <h1 class="text-center mb-4">🩺 Diagnosis Result</h1>
+
+    <div class="card result-card shadow p-4 mb-5">
+        <div class="card-body text-center text-dark">
+            <p><strong>Name:</strong> {{ name }}</p>
+            <p><strong>Age:</strong> {{ age }}</p>
+            <p><strong>Contact:</strong> {{ contact }}</p>
+
+            <div class="alert alert-info mt-4">
+                <p class="mb-2" style="font-size: 20px;"><strong>Prediction:</strong> {{ prediction }}</p>
+                <p class="mb-2" style="font-size: 20px;"><strong>Confidence Score:</strong> {{ confidence }}%</p>
+                <p class="mt-3 text-primary" style="font-size: 18px;"><strong>Blockchain Hash:</strong> {{ blockchain_hash }}</p>
+            </div>
         </div>
     </div>
-    <a href="/" class="back-link">🔙 Go Back</a>
+
+    <!-- Additional Information Section to fill the page -->
+    <div class="extra-info">
+        <h2>How Blockchain Enhances Your Data Security</h2>
+        <p>
+            At MedChain-X, we harness the power of blockchain technology to ensure that your diagnostic data remains immutable and secure.
+            This decentralized approach not only safeguards your medical records from tampering but also provides a transparent audit trail.
+        </p>
+        <p>
+            Our innovative system stores a unique blockchain hash alongside your diagnostic result to certify data integrity.
+            This means you can trust that your medical information is both accurate and securely preserved.
+        </p>
+        <div class="text-center mt-4">
+            <a href="/about" class="btn btn-primary">Learn More About Our Technology</a>
+        </div>
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="/" class="btn btn-outline-primary">🔙 Go Back</a>
+    </div>
 </div>
+
+<!-- Blockchain Success Modal -->
+<div id="popup" class="text-center">
+    ✅ Data successfully stored on the blockchain!
+</div>
+
+<script>
+    // Show popup modal on page load for 4 seconds
+    window.onload = function () {
+        const popup = document.getElementById("popup");
+        popup.style.display = "block";
+        setTimeout(() => popup.style.display = "none", 4000);
+    };
+</script>
 {% endblock %}
