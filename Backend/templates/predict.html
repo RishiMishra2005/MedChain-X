@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>MedChain-X | AI X-ray Diagnosis</title>
+    <style>
+        /* Hero Section Styling */
+        .predict-hero {
+            background: url("{{ url_for('static', filename='images/test4.png') }}") no-repeat center center/cover;
+            height: 50vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-align: center;
+            padding: 0 20px;
+        }
+        .predict-hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(94, 109, 125, 0.6);
+        }
+        .predict-hero h1, .predict-hero p {
+            position: relative;
+            z-index: 1;
+        }
+        .predict-hero h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+        .predict-hero p {
+            font-size: 20px;
+            margin-bottom: 0;
+        }
+
+        /* Form Container Styling */
+        .form-container {
+            margin: 50px auto 40px;
+            max-width: 600px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #34495e;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #555;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="number"],
+        .form-group input[type="file"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        .form-group input:focus {
+            border-color: #2980b9;
+            outline: none;
+        }
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .btn-group button {
+            flex: 1;
+            padding: 12px;
+            background: #2980b9;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .btn-group button:hover {
+            background: #1c5980;
+        }
+
+        /* Extra Info Section Styling */
+        .predict-info {
+            margin: 40px auto 20px;
+            max-width: 800px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        .predict-info h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #34495e;
+        }
+        .predict-info p {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 480px) {
+            .predict-hero h1 {
+                font-size: 32px;
+            }
+            .predict-hero p {
+                font-size: 18px;
+            }
+            .form-container {
+                margin: -40px 10px 20px;
+                padding: 20px;
+            }
+            .predict-info h3 {
+                font-size: 24px;
+            }
+            .predict-info p {
+                font-size: 16px;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="predict-hero">
+    <h1>AI-Powered X-Ray Diagnosis</h1>
+    <p>Submit your X-ray image for a rapid, secure diagnosis</p>
+</section>
+
+<!-- Form Container -->
+<div class="container my-5">
+    <div class="form-container">
+        <h2>Enter Your Details</h2>
+        <form action="/predict" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required placeholder="Enter your age">
+            </div>
+            <div class="form-group">
+                <label for="contact">Contact Number:</label>
+                <input type="text" id="contact" name="contact" required placeholder="Enter your contact number">
+            </div>
+            <div class="form-group">
+                <label for="xray_image">Upload X-ray:</label>
+                <input type="file" id="xray_image" name="xray_image" accept="image/*" required>
+            </div>
+            <div class="btn-group">
+                <button type="submit" name="action" value="predict">Predict Disease</button>
+                <button type="submit" name="action" value="report">Get Report</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Extra Information Section -->
+    <div class="predict-info">
+        <h3>How It Works</h3>
+        <p>
+            Our advanced ensemble of AI models analyzes your X-ray image to detect abnormalities and provide an accurate diagnosis with a confidence score. 
+            Rest assured that all your data is securely stored on the blockchain, ensuring data integrity and privacy.
+        </p>
+    </div>
+</div>
+{% endblock %}
