@@ -1,0 +1,156 @@
+/* src/css/Home.css */
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom right,
+    rgba(0, 0, 0, 0.6),
+    rgba(0, 0, 0, 0.2)
+  );
+  transition: background 0.6s ease;
+  z-index: 1;
+}
+
+.hero:hover::before {
+  background: linear-gradient(
+    to bottom right,
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.1)
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  padding: 0 1rem;
+  max-width: 600px;
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  max-width: 500px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Call‑to‑Action Button */
+.button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: #ff7e00;
+  color: #fff;
+  border-radius: 50px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.button:hover {
+  background: #ffa347;
+  transform: translateY(-4px);
+}
+
+/* Features Section */
+.features {
+  padding: 6rem 2rem;
+  background: #f9faff;
+  text-align: center;
+}
+
+.features h2 {
+  font-size: 2.75rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 2.5rem;
+}
+
+/* Feature Cards Grid */
+.feature-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Individual Card */
+.feature-card {
+  position: relative;
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+/* Accent Bar */
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: #ff7e00;
+}
+
+/* Full-Width Image */
+.feature-card img {
+  display: block;
+  width: 100%;
+  height: 180px;       /* adjust as desired */
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+/* Text Content */
+.feature-card h3 {
+  font-size: 1.5rem;
+  color: #ff7e00;
+  margin: 1rem 1.5rem 0.5rem;
+}
+
+.feature-card p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  margin: 0 1.5rem 1.5rem;
+}
+
+/* Hover Effects */
+.feature-card:hover {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.feature-card:hover img {
+  transform: scale(1.1);
+}
