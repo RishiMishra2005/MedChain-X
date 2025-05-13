@@ -60,6 +60,7 @@ export default function About() {
             <p>Your data is securely stored using advanced encryption and blockchain technology.</p>
           </div>
         </div>
+        
       </section>
     </>
   );
